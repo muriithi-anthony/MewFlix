@@ -1,4 +1,4 @@
-import Navbar from "../componenta/Navbar";
+import Navbar from "../components/Navbar";
 
 const Homepage = () => {
   return <div>
