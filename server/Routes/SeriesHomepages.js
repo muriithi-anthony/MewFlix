@@ -1,5 +1,8 @@
-const SeriesHomepages = (req, res) => {
-  res.status(200).send("SeriesHomepages");
-};
+import { Router } from "express";
+import Series from "../controllers/SeriesController.js";
 
-export default SeriesHomepages;
+const router = Router();
+
+router.get("/", Series);
+
+export default router;
