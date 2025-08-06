@@ -32,44 +32,44 @@ const Sidebar = () => {
     <div>
       <Hamburger setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
       <div
-        className={`flex justify-around p-2 text-2xl text-[#116011] border-[#185a18] bg-black border-t-2 text-center h-[50px] sm:flex-col sm:w-[50px] sm:border-none sm:items-center sm:h-[calc(100vh-60px)] sm:justify-between sm:py-[50px] sm:${
+        className={`flex justify-around p-2 text-2xl text-[#116011] border-[#185a18] bg-black border-t-2 text-center h-[50px] w-screen sm:flex sm:flex-col sm:w-[50px] sm:border-none sm:h-[calc(100vh-60px)] sm:pt-[calc(20vh-30px)] sm:pb-[20vh] sm:justify-between sm:items-center sm:${
           sidebarOpen ? "block" : "hidden"
         }`}
       >
         <Link
           to="/"
           onClick={() => setSidebarOpen(false)}
-          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md sm:mt-10"
+          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md"
         >
-          <FontAwesomeIcon icon={faHome} />
+          <FontAwesomeIcon  icon={faHome} />
         </Link>
         <Link
           to="/trending"
           onClick={() => setSidebarOpen(false)}
-          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md sm:mt-[-150px]"
+          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md"
         >
-          <FontAwesomeIcon icon={faFireFlameCurved} />
+          <FontAwesomeIcon  icon={faFireFlameCurved} />
         </Link>
         <Link
           to="/newReleases"
           onClick={() => setSidebarOpen(false)}
-          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md sm:mt-[-150px]"
+          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md"
         >
-          <FontAwesomeIcon icon={faBolt} />
+          <FontAwesomeIcon  icon={faBolt} />
         </Link>
         <Link
           to="/upcoming"
           onClick={() => setSidebarOpen(false)}
-          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md sm:mt-[-150px]"
+          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md"
         >
-          <FontAwesomeIcon icon={faArrowTrendUp} />
+          <FontAwesomeIcon  icon={faArrowTrendUp} />
         </Link>
         <Link
           to="/settings"
           onClick={() => setSidebarOpen(false)}
-          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md"
+          className="hover:bg-[#28a428] hover:text-black w-[50px] rounded-md "
         >
-          <FontAwesomeIcon icon={faGear} />
+          <FontAwesomeIcon  icon={faGear} />
         </Link>
       </div>
     </div>

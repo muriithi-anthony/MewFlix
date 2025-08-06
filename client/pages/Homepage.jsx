@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="w-screen h-screen">
       <Navbar />
       <Sidebar />
     </div>
