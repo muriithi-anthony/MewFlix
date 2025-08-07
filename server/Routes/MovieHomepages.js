@@ -1,5 +1,6 @@
-const MovieHomepages = (req, res) => {
-  res.status(200).send("MovieHomepages");
-};
+import { Router } from "express";
+import Movies from "../controllers/MoviesController.js";
 
-export default MovieHomepages;
+const router = Router();
+router.get("/", Movies);
+export default router;
