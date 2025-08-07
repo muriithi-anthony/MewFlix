@@ -1,7 +1,8 @@
+import Scrapper from "../../utils/Scrapper.js";
+
 const Home = (req, res) => {
-  res.status(200).json({
-    message: "Home endpoint",
-  });
+  const homeData = Scrapper("series/?order=popular", ConfigMap);
+  res.status(200).json("Hello from home");
 };
 
 export default Home;

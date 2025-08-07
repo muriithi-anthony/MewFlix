@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import HomepageRoutes from "./Routes/HomepageRoutes.js";
 import MovieHomepages from "./Routes/MovieHomepages.js";
 import SeriesHomepages from "./Routes/SeriesHomepages.js";
@@ -7,6 +8,9 @@ import SeriesHomepages from "./Routes/SeriesHomepages.js";
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 8000;
+
+app.use(express.json());
+app.use(cors());
 
 //Routes
 app.use("/", HomepageRoutes);
