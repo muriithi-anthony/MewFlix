@@ -1,5 +1,9 @@
-const ConfigMap = {
-  
-}
+const HomeScrapper = ($) => {
+  return $.html();
+};
 
-export default ConfigMap
+const ConfigMap = {
+  home: HomeScrapper,
+};
+
+export default ConfigMap;

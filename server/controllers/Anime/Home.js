@@ -1,8 +1,16 @@
 import Scrapper from "../../utils/Scrapper.js";
+import MapConfig from "../../utils/config/MapConfig.js";
 
-const Home = (req, res) => {
-  const homeData = Scrapper("series/?order=popular", ConfigMap);
-  res.status(200).json("Hello from home");
+//"/" endpoint, scrap popular
+const Home = async (req, res) => {
+  try {
+    const config = MapConfig.home;
+    const homeData = await Scrapper("series/?order=popular", config);
+    res.status(200).send(homeData);
+  } catch (err) {
+    console.error("Scraping failed:", err.message);
+    res.status(500).json({ error: "Scraping failed." });
+  }
 };
 
 export default Home;
