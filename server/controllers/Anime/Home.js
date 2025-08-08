@@ -5,11 +5,11 @@ import MapConfig from "../../utils/config/MapConfig.js";
 const Home = async (req, res) => {
   try {
     const config = MapConfig.home;
-    const homeData = await Scrapper("series/?order=popular", config);
+    const homeData = await Scrapper({ url: "series/?order=popular", config });
     res.status(200).send(homeData);
   } catch (err) {
     console.error("Scraping failed:", err.message);
-    res.status(500).json({ error: "Scraping failed." });
+    res.status(500).json({ error: "Failed to fetch." });
   }
 };
 
