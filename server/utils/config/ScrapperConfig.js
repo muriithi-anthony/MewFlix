@@ -13,6 +13,12 @@ const HomeScrapper = ($) => {
   return results;
 };
 
+export const MovieHomepageScrapper = ($) => {
+  const slider = [];
+  const results = [];
+  return $.html();
+};
+
 const ConfigMap = {
   home: HomeScrapper,
 };

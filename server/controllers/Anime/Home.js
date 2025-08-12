@@ -1,10 +1,10 @@
 import Scrapper from "../../utils/Scrapper.js";
-import MapConfig from "../../utils/config/MapConfig.js";
+import ScrapperConfig from "../../utils/config/ScrapperConfig.js";
 
 //"/" endpoint, scrap popular
 const Home = async (req, res) => {
   try {
-    const config = MapConfig.home;
+    const config = ScrapperConfig.home;
     const homeData = await Scrapper({ url: "series/?order=popular", config });
     res.status(200).send(homeData);
   } catch (err) {
