@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import axios from "axios";
+import puppeteer from "puppeteer";
 import { useState } from "react";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -20,7 +20,6 @@ const Home = () => {
         setLoading(false);
       }
     };
-
     console.log(homeData);
 
     getHome();

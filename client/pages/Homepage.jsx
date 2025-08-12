@@ -5,8 +5,6 @@ import Sidebar from "../components/Sidebar";
 const Homepage = () => {
   return (
     <div className="w-screen h-screen">
-      <Navbar />
-      <Sidebar />
       <Home />
     </div>
   );
