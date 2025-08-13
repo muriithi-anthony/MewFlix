@@ -13,14 +13,57 @@ const HomeScrapper = ($) => {
   return results;
 };
 
-export const MovieHomepageScrapper = ($) => {
+const MovieHomepageScrapper = ($) => {
   const slider = [];
   const results = [];
-  return $.html();
+
+  //slider data
+  $("#ftr .dflex > div").each((_, poster) => {
+    const link = $(poster).find("a").attr("href");
+    const image = $(poster).find("img").attr("src");
+    const title = $(poster).find("span").text();
+
+    slider.push({ title, link, image });
+  });
+
+  //results data
+  $(".mxwd")
+    .not($("#ftr .mxwd"))
+    .find(".dflex > div")
+    .each((_, poster) => {
+      const link = $(poster).find("a").attr("href");
+      const image = $(poster).find("img").attr("src");
+      const title = $(poster).find(".mt1").text();
+      const year = $(poster).find(".hd.hdy").text();
+
+      results.push({ title, link, year, image });
+    });
+
+  return { slider, results };
 };
 
-const ConfigMap = {
+const nextMoviePageScrapper = ($) => {
+  const results = [];
+
+  $(".mxwd")
+    .not($("#ftr .mxwd"))
+    .find(".dflex > div")
+    .each((_, poster) => {
+      const link = $(poster).find("a").attr("href");
+      const image = $(poster).find("img").attr("src");
+      const title = $(poster).find(".mt1").text();
+      const year = $(poster).find(".hd.hdy").text();
+
+      results.push({ title, link, year, image });
+    });
+
+  return results;
+};
+
+const ScrapperConfig = {
   home: HomeScrapper,
+  movieHomepage: MovieHomepageScrapper,
+  nextMoviePage: nextMoviePageScrapper,
 };
 
-export default ConfigMap;
+export default ScrapperConfig;
