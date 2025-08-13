@@ -51,7 +51,7 @@ const nextMoviePageScrapper = ($) => {
     .each((_, poster) => {
       const link = $(poster).find("a").attr("href");
       const image = $(poster).find("img").attr("src");
-      const title = $(poster).find(".mt1").text();
+      const title = $(poster).find(".mtl").text();
       const year = $(poster).find(".hd.hdy").text();
 
       results.push({ title, link, year, image });

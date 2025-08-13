@@ -1,62 +1,51 @@
 import { useEffect } from "react";
-import puppeteer from "puppeteer";
+import axios from "axios";
 import { useState } from "react";
 import Loading from "./Loading";
 import Error from "./Error";
+import AnimeCard from "./AnimeCard";
 
-const Home = () => {
+const Home = ({ url = "/" }) => {
   const [homeData, setHomeData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const baseUrl = "http://localhost:5001";
+
   useEffect(() => {
     const getHome = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5001/");
-        setHomeData(data);
+        const { data } = await axios.get(`${baseUrl}${url}`);
+        setHomeData([data.data.data.slider, data.data.data.results]);
       } catch (error) {
         setError(String(error.message));
       } finally {
         setLoading(false);
       }
     };
-    console.log(homeData);
-
     getHome();
-  }, []);
+
+    console.log(homeData);
+  }, [url]);
 
   return (
-    <div className="h-full overflow-y-auto p-2 w-screen sm:absolute sm:top-[60px] sm:left-[50px] sm:h-full sm:w-[calc(100vw - 50px)]">
-      {loading && (
-        <div className="h-full flex items-center justify-center">
-          <Loading />
-        </div>
-      )}
-      {error && (
-        <div className="h-full flex items-center justify-center">
-          <Error error={error} />
-        </div>
-      )}
+    <div>
+      <div className="h-full overflow-y-auto p-2 w-screen sm:absolute sm:top-[60px] sm:left-[50px] sm:h-full sm:w-[calc(100vw - 50px)]">
+        {loading && (
+          <div className="h-full flex items-center justify-center">
+            <Loading />
+          </div>
+        )}
+        {error && (
+          <div className="h-full flex items-center justify-center">
+            <Error error={error} />
+          </div>
+        )}
 
-      {!loading && !error && (
-        <div className="flex flex-wrap justify-between">
-          <ul>
-            {homeData.map((data, index) => {
-              return (
-                <a key={index} href={data.link}>
-                  <div
-                    style={{ backgroundImage: `url(${data.image})` }}
-                    className={`h-[40vw] w-[40vw] bg-cover bg-center`}
-                  >
-                    <h2>{data.title}</h2>
-                    <p>{data.status}</p>
-                  </div>
-                </a>
-              );
-            })}
-          </ul>
-        </div>
-      )}
+        {
+          //render lists
+        }
+      </div>
     </div>
   );
 };

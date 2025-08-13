@@ -3,7 +3,7 @@ import Home from "../components/Home";
 const MoviesHomepage = () => {
   return (
     <div>
-      <Home />
+      <Home url={"/movies"} />
     </div>
   );
 };
