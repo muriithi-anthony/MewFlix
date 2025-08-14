@@ -31,9 +31,12 @@ const MovieHomepageScrapper = ($) => {
     .not($("#ftr .mxwd"))
     .find(".dflex > div")
     .each((_, poster) => {
-      const link = $(poster).find("a").attr("href");
+      const link = $(poster)
+        .find("a")
+        .attr("href")
+        .replace(process.env.MOVIES_BASE_URL, "");
       const image = $(poster).find("img").attr("src");
-      const title = $(poster).find(".mt1").text();
+      const title = $(poster).find(".mtl").text();
       const year = $(poster).find(".hd.hdy").text();
 
       results.push({ title, link, year, image });
@@ -49,7 +52,10 @@ const nextMoviePageScrapper = ($) => {
     .not($("#ftr .mxwd"))
     .find(".dflex > div")
     .each((_, poster) => {
-      const link = $(poster).find("a").attr("href");
+      const link = $(poster)
+        .find("a")
+        .attr("href")
+        .replace("https://ww1.goojara.to/", "");
       const image = $(poster).find("img").attr("src");
       const title = $(poster).find(".mtl").text();
       const year = $(poster).find(".hd.hdy").text();

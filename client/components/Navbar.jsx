@@ -35,7 +35,7 @@ const Navbar = () => {
           <h1 className="font-title">MeowFlix</h1>
         </div>
 
-        <ul className=" hidden md:flex mg:self-center list-none w-[300px] justify-between lg:ml-10 items-center">
+        <ul className=" hidden md:flex md:self-center list-none w-[300px] justify-between lg:ml-10 items-center">
           <li>
             <Link to="/">Anime</Link>
           </li>

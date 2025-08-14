@@ -3,10 +3,10 @@ import axios from "axios";
 import { useState } from "react";
 import Loading from "./Loading";
 import Error from "./Error";
-import AnimeCard from "./AnimeCard";
+import CardData from "./CardData";
 
 const Home = ({ url = "/" }) => {
-  const [homeData, setHomeData] = useState([]);
+  const [homeData, setHomeData] = useState({ slider: [], results: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -16,7 +16,10 @@ const Home = ({ url = "/" }) => {
     const getHome = async () => {
       try {
         const { data } = await axios.get(`${baseUrl}${url}`);
-        setHomeData([data.data.data.slider, data.data.data.results]);
+        setHomeData({
+          slider: data.data.data.slider,
+          results: data.data.data.results,
+        });
       } catch (error) {
         setError(String(error.message));
       } finally {
@@ -30,7 +33,7 @@ const Home = ({ url = "/" }) => {
 
   return (
     <div>
-      <div className="h-full overflow-y-auto p-2 w-screen sm:absolute sm:top-[60px] sm:left-[50px] sm:h-full sm:w-[calc(100vw - 50px)]">
+      <div className="h-full fixed overflow-y-auto p-2 w-screen sm:absolute sm:top-[60px] sm:left-[50px] sm:h-full sm:w-[calc(100vw - 50px)] sm:pr-[60px] sm:overflow-x-hidden">
         {loading && (
           <div className="h-full flex items-center justify-center">
             <Loading />
@@ -41,10 +44,16 @@ const Home = ({ url = "/" }) => {
             <Error error={error} />
           </div>
         )}
-
-        {
-          //render lists
-        }
+        {!error && !loading && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+            {
+              //  render lists
+              homeData.results.map((data, index) => {
+                return <CardData key={index} data={data} />;
+              })
+            }
+          </div>
+        )}
       </div>
     </div>
   );
