@@ -1,7 +1,7 @@
 import * as cheerio from "cheerio";
 import puppeteer from "puppeteer";
 
-const Scrapper = async ({ url, config } = {}) => {
+const Scrapper = async ({ url, config, waitForSelectors = [] } = {}) => {
   const scrape = async () => {
     try {
       const browser = await puppeteer.launch({ headless: true });
@@ -13,6 +13,10 @@ const Scrapper = async ({ url, config } = {}) => {
 
       // Get page content
       const html = await page.content();
+      for (const selector of waitForSelectors) {
+        console.log(`Waiting for selector: ${selector}`);
+        await page.waitForSelector(selector, { timeout: 10000 }); // Wait up to 10 seconds for the selector
+      }
 
       const $ = cheerio.load(html);
 

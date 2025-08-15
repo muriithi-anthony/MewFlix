@@ -15,6 +15,6 @@ app.use(cors());
 //Routes
 app.use("/movies", MovieHomepages);
 app.use("/series", SeriesHomepages);
-app.use("/", AnimeHomepageRoutes);
+app.use("/anime", AnimeHomepageRoutes);
 
 app.listen(PORT, () => console.log("Server listening on PORT: ", PORT));

@@ -4,8 +4,9 @@ import { useState } from "react";
 import Loading from "./Loading";
 import Error from "./Error";
 import CardData from "./CardData";
+import Slider from "./Slider";
 
-const Home = ({ url = "/" }) => {
+const Home = ({ url = "/anime" }) => {
   const [homeData, setHomeData] = useState({ slider: [], results: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -44,16 +45,22 @@ const Home = ({ url = "/" }) => {
             <Error error={error} />
           </div>
         )}
-        {!error && !loading && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-            {
-              //  render lists
-              homeData.results.map((data, index) => {
-                return <CardData key={index} data={data} />;
-              })
-            }
-          </div>
-        )}
+        {!error &&
+          !loading && ( // render slider
+            // render lists
+            <div>
+              <div>
+                <div className="pb-4 flex justify-center">
+                  {<Slider slides={homeData.slider} />}
+                </div>
+              </div>
+              <div className="grid grid-cols-2 justify-items-center  sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8">
+                {homeData.results.map((data, index) => (
+                  <CardData key={index} data={data} />
+                ))}
+              </div>
+            </div>
+          )}
       </div>
     </div>
   );

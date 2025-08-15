@@ -37,7 +37,7 @@ const Navbar = () => {
 
         <ul className=" hidden md:flex md:self-center list-none w-[300px] justify-between lg:ml-10 items-center">
           <li>
-            <Link to="/">Anime</Link>
+            <Link to="/anime">Anime</Link>
           </li>
           <li>
             <Link to="/movies">Movies</Link>

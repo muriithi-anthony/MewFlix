@@ -66,10 +66,27 @@ const nextMoviePageScrapper = ($) => {
   return results;
 };
 
+const MovieDetailsScrapper = ($) => {
+  const details = {};
+
+  details.streamLink = $("#vidcon iframe").attr("src") || "src not found";
+  details.poster = $("#poster").find("img").attr("src");
+  details.title = $(".marl").find("h1").text();
+  details.description = $(".fimm p").first().text();
+  const metaData = $(".date").text();
+
+  console.log(details.streamLink);
+
+  console.log("Movie Details:", details.streamLink);
+  console.log("Meta Data:", metaData);
+
+  return [metaData, details];
+};
 const ScrapperConfig = {
   home: HomeScrapper,
   movieHomepage: MovieHomepageScrapper,
   nextMoviePage: nextMoviePageScrapper,
+  MovieDetails: MovieDetailsScrapper,
 };
 
 export default ScrapperConfig;
