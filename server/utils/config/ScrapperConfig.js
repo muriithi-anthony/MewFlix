@@ -75,11 +75,6 @@ const MovieDetailsScrapper = ($) => {
   details.description = $(".fimm p").first().text();
   const metaData = $(".date").text();
 
-  console.log(details.streamLink);
-
-  console.log("Movie Details:", details.streamLink);
-  console.log("Meta Data:", metaData);
-
   return [metaData, details];
 };
 const ScrapperConfig = {

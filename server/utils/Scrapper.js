@@ -21,7 +21,7 @@ const Scrapper = async ({ url, config, waitForSelectors = [] } = {}) => {
       const $ = cheerio.load(html);
 
       await browser.close();
-      return config($);
+      return await config($);
     } catch (error) {
       console.log(error.message);
       return;

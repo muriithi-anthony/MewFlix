@@ -1,4 +1,5 @@
 import ScrapperConfig from "../../utils/config/ScrapperConfig.js";
+import GetActualLink from "../../utils/GetActualLink.js";
 import Scrapper from "../../utils/Scrapper.js";
 
 const MovieDetails = async (req, res) => {
@@ -13,6 +14,11 @@ const MovieDetails = async (req, res) => {
       config,
       waitForSelectors,
     });
+
+    const link = data[1].streamLink;
+    console.log(link);
+    const vidLink = await GetActualLink(link);
+
     res.status(200).json({ details: data });
   } catch (error) {
     res.status(500).json({ message: error.message });
