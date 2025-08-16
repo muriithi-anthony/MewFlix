@@ -18,7 +18,7 @@ const MovieDetails = async (req, res) => {
     const link = data[1].streamLink;
     console.log(link);
     const vidLink = await GetActualLink(link);
-
+    data[1].streamLink = vidLink || data[1].streamLink;
     res.status(200).json({ details: data });
   } catch (error) {
     res.status(500).json({ message: error.message });

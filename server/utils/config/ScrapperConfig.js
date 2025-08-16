@@ -1,16 +1,22 @@
 const HomeScrapper = ($) => {
-  const results = [];
+  const data = {};
+  const slider = [];
 
-  $(".bs").each((_, article) => {
-    const image = $(article).find("img").attr("src");
-    const link = $(article).find("a").attr("href");
-    const title = $(article).find("h2").text();
-    const status = $(article).find(".epx").text().trim();
+  $(".swiper-wrapper .swiper-slide").each((_, item) => {
+    const image = $(item).find("img").attr("src");
+    const link = $(item).find("a").first().attr("href");
+    const title = $(item).find("a").first().text();
 
-    results.push({ title, image, link, status });
+    if (!title || !link || !title) return;
+
+    slider.push({ title, image, link });
   });
 
-  return results;
+  $;
+
+  data.slider = slider;
+
+  return slider;
 };
 
 const MovieHomepageScrapper = ($) => {
