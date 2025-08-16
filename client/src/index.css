@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+.nunito-font {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.onest-font {
+  font-family: "Onest", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.wallpoet-font {
+  font-family: "Wallpoet", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

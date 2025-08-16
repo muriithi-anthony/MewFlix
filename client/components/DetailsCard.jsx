@@ -5,7 +5,7 @@ const DetailsCard = ({ details }) => {
 
   const trimmedMetaData = metaData.slice(0, -1);
 
-  console.log(trimmedMetaData);
+  console.log(details?.info?.streamLink);
 
   return (
     <div>
@@ -29,8 +29,9 @@ const DetailsCard = ({ details }) => {
           <iframe
             className="h-[30%] w-full"
             src={details?.info?.streamLink}
+            allow="fullscreen; autoplay; encrypted-media; picture-in-picture; clipboard-write"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-presentation"
             title="Stream"
-            sandbox="allow-scripts allow-same-origin allow-presentation"
             allowFullScreen
           ></iframe>
         </div>

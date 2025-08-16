@@ -13,10 +13,7 @@ const App = () => {
       <Routes>
         <Route path={"/" || "/anime"} element={<Homepage />} />
         <Route path="/movies" element={<MoviesHomepage />} />
-        <Route
-          path="/movies/:id"
-          element={<DetailsPage category="/movies" />}
-        />
+        <Route path="/movies/:id" element={<DetailsPage category="movies" />} />
         <Route />
         <Route />
       </Routes>
