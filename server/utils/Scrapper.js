@@ -14,7 +14,7 @@ const Scrapper = async ({ url, config, waitForSelectors = [] } = {}) => {
       // Get page content
       for (const selector of waitForSelectors) {
         console.log(`Waiting for selector: ${selector}`);
-        await page.waitForSelector(selector, { timeout: 10000 }); // Wait up to 10 seconds for the selector
+        await page.waitForSelector(selector, { timeout: 15000 }); // Wait up to 10 seconds for the selector
       }
       const html = await page.content();
 
